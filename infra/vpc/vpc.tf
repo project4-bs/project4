@@ -99,12 +99,12 @@ resource "aws_default_route_table" "project04-public-rt-table" {
 }
 
 resource "aws_route_table_association" "project04-public-rt-2a" {
-    subnet_id = aws_subnet.project04-public1-subnet-2a.id
+    subnet_id = aws_subnet.project04-subnet-public1-2a.id
     route_table_id = aws_default_route_table.project04-public-rt-table.id
 }
 
 resource "aws_route_table_association" "project04-public-rt-2c" {
-    subnet_id = aws_subnet.project04-public2-subnet-2c.id
+    subnet_id = aws_subnet.project04-subnet-public2-2c.id
     route_table_id = aws_default_route_table.project04-public-rt-table.id
 }
 
@@ -120,15 +120,15 @@ resource "aws_route_table" "project04-private-rt-table" {
 resource "aws_route" "project04-private-rt" {
     route_table_id = aws_route_table.project04-private-rt-table.id
     destination_cidr_block = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.project04-nat.id
+    nat_gateway_id = aws_nat_gateway.project04-nat-public1-2a.id
 }
 
 resource "aws_route_table_association" "project04-private-rt-2a" {
-    subnet_id = aws_subnet.project04-private1-subnet-2a.id
+    subnet_id = aws_subnet.project04-subnet-private1-2a.id
     route_table_id = aws_route_table.project04-private-rt-table.id
 }
 
 resource "aws_route_table_association" "project04-private-rt-2c" {
-    subnet_id = aws_subnet.project04-private2-subnet-2c.id
+    subnet_id = aws_subnet.project04-subnet-private2-2c.id
     route_table_id = aws_route_table.project04-private-rt-table.id
 }
