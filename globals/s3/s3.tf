@@ -1,9 +1,5 @@
 resource "aws_s3_bucket" "s3" {
   bucket = "project04-s3-bucket"
-
-  lifecycle_rule{
-    prevent_destroy = false
-  }
   force_destroy = true
 
   tags = {
