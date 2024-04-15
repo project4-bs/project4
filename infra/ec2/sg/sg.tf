@@ -37,7 +37,25 @@ resource "aws_security_group" "http" {
     Name = "project04-http"
   }
 }
-
+resource "aws_security_group" "jenkins" {
+    name = "project04-jenkins"
+    vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
+    ingress {
+        from_port = var.jenkins_port
+        to_port = var.jenkins_port
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+  tags = {
+    Name = "project04-jenkins"
+  }
+}
 resource "aws_security_group" "https" {
     name = "project04-https"
     vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id

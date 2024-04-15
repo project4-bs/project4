@@ -1,6 +1,11 @@
 variable "http_port" {
     type = number
     description = "The port will use for HTTP requests"
+    default = 80
+}
+
+variable "jenkins_port" {
+    type = number
     default = 8080
 }
 

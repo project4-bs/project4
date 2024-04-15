@@ -1,14 +1,12 @@
-# #!/bin/bash
+#!/bin/bash
+echo 'Hello' > hello.txt
+sudo apt update -y
+sudo apt install git curl -y
+cd /home/ubuntu
+git clone https://github.com/Lucas0828/aws-project.git
+sudo chown -R ubuntu:ubuntu aws-project
 
-# sudo apt update -y
-# sudo apt install -y ruby wget openjdk-17-jdk docker.io git curl zip unzip
+cd /home/ubuntu/aws-project
+chmod u+x install-docker.sh && sudo ./install-docker.sh
+sudo docker compose up -d --build
 
-# cd /home/ubuntu
-# git clone https://github.com/twigim2/aws-project.git
-# sudo chown -R ubuntu:ubuntu aws-project
-
-# cd /home/ubuntu/aws-project
-# chmod u+x install-docker.sh && sudo ./install-docker.sh
-# chmod u+x install-docker-compose.sh && sudo ./install-docker-compose.sh
-
-# sudo docker-compose up -d --build
